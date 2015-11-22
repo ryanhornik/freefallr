@@ -19,7 +19,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return HttpResponse("Success")
-    return HttpResponse("Invalid login")
+    return HttpResponse("Invalid login", status=401)
 
 
 @csrf_exempt
@@ -31,15 +31,15 @@ def register(request):
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
         if password != confirm_password:
-            return HttpResponse("Passwords do not match")
+            return HttpResponse("Passwords do not match", status=401)
         user = User.objects.create_user(username, email, password)
         if user is not None:
             app_user = AppUser(user=user)
             app_user.save()
             return HttpResponse("Success")
         else:
-            return HttpResponse("Username Taken")
-    return HttpResponse("Error")
+            return HttpResponse("Username Taken", status=401)
+    return HttpResponse("Error", status=401)
 
 
 @csrf_exempt
