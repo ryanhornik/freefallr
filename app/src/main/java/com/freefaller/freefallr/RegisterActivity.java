@@ -1,5 +1,6 @@
 package com.freefaller.freefallr;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.loopj.android.http.RequestParams;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -43,7 +46,12 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                RequestParams params = new RequestParams();
+                params.add("email", email.getText().toString());
+                params.add("username", username.getText().toString());
+                params.add("password", password.getText().toString());
+                params.add("confirm_password", confirm_password.getText().toString());
+                FreeFallrHttpClient.post("/register/", params, new FreeFallrHttpClient.RegisterHandler());
             }
         });
 
