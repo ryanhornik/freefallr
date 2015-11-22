@@ -15,6 +15,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
     public static MainActivity instance;
+    public static String username;
     Button login, signUp;
     EditText usernameField, passwordField;
 
@@ -33,25 +34,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 RequestParams params = new RequestParams();
-                FreeFallrHttpClient.LoginHandler.username = usernameField.getText().toString();
+                LoginHandler.username = usernameField.getText().toString();
                 params.add("username", usernameField.getText().toString());
                 params.add("password", passwordField.getText().toString());
-                FreeFallrHttpClient.post("/login/", params, new FreeFallrHttpClient.LoginHandler());
-                if(FreeFallrHttpClient.LoginHandler.success){
-                    Intent intent = new Intent(MainActivity.instance, UserStatsActivity.class);
-                    MainActivity.instance.startActivity(intent);
-                }else{
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Username/Password do not match")
-                            .setMessage(FreeFallrHttpClient.LoginHandler.message)
-                            .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.cancel();
-                                }
-                            })
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
+                FreeFallrHttpClient.post("/login/", params, new LoginHandler());
             }
         });
 
@@ -62,5 +48,43 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+    }
+}
+
+class LoginHandler extends TextHttpResponseHandler {
+    public static String username = null;
+    public static boolean success = false;
+    public static String message = null;
+
+    @Override
+    public void onSuccess(int statusCode, Header[] headers, String responseBody) {
+        success = true;
+        message = responseBody;
+
+        Intent intent = new Intent(MainActivity.instance, UserStatsActivity.class);
+        MainActivity.instance.startActivity(intent);
+    }
+
+    @Override
+    public void onFailure(int statusCode, Header[] headers, String responseBody, Throwable error){
+        username = null;
+        success = false;
+        message = responseBody;
+
+        new AlertDialog.Builder(MainActivity.instance)
+                .setTitle("Username/Password do not match")
+                .setMessage(LoginHandler.message)
+                .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    @Override
+    public void onFinish() {
+        MainActivity.username = username;
     }
 }

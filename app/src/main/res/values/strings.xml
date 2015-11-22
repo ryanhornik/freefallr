@@ -107,4 +107,9 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_user_stats">UserStatsActivity</string>
+    <string name="last_fall_label">Last Fall</string>
+    <string name="longest_fall_label">Longest Fall</string>
+    <string name="first_fall_label">First Fall</string>
+    <string name="shortest_fall_label">Shortest Fall</string>
+    <string name="average_fall_label">Average Fall</string>
 </resources>
