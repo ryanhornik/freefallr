@@ -31,7 +31,11 @@ public class UserStatsActivity extends AppCompatActivity {
         FreeFallrHttpClient.get("/stats/", new RequestParams(), new UserStatsHandler());
 
         username = (TextView) findViewById(R.id.username);
-        username.setText(MainActivity.username);
+        average_fall = (TextView) findViewById(R.id.average_fall);
+        last_fall = (TextView) findViewById(R.id.last_fall);
+        first_fall = (TextView) findViewById(R.id.first_fall);
+        longest_fall = (TextView) findViewById(R.id.longest_fall);
+        shortest_fall = (TextView) findViewById(R.id.shortest_fall);
     }
     class UserStatsHandler extends JsonHttpResponseHandler {
         public String first_fall_str = null;
@@ -53,20 +57,13 @@ public class UserStatsActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 onFailure(statusCode, headers, "One or more values not found", new Throwable());
             }
-            last_fall = (TextView) findViewById(R.id.last_fall);
+
             last_fall.setText(last_fall_str);
-
-            first_fall = (TextView) findViewById(R.id.first_fall);
             first_fall.setText(first_fall_str);
-
-            longest_fall = (TextView) findViewById(R.id.longest_fall);
             longest_fall.setText(longest_fall_str);
-
-            shortest_fall = (TextView) findViewById(R.id.shortest_fall);
             shortest_fall.setText(shortest_fall_str);
-
-            average_fall = (TextView) findViewById(R.id.average_fall);
-            average_fall.setText(String.format("%f", average_fall_time_str));
+            average_fall.setText(String.format("%fms", average_fall_time_str));
+            username.setText(MainActivity.username);
         }
 
         @Override

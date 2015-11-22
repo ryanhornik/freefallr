@@ -29,7 +29,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/average_fall_label"
         android:id="@+id/average_fall_label"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
@@ -55,16 +55,18 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:text="@string/last_fall_label"
-            android:id="@+id/last_fall_label" />
+            android:id="@+id/last_fall_label"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Medium Text"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:id="@+id/last_fall" />
+            android:id="@+id/last_fall"
+            android:layout_centerVertical="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -80,16 +82,18 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:text="@string/first_fall_label"
-            android:id="@+id/first_fall_label" />
+            android:id="@+id/first_fall_label"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Medium Text"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:id="@+id/first_fall" />
+            android:id="@+id/first_fall"
+            android:layout_centerVertical="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -105,16 +109,18 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:text="@string/longest_fall_label"
-            android:id="@+id/longest_fall_label" />
+            android:id="@+id/longest_fall_label"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Medium Text"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:id="@+id/longest_fall" />
+            android:id="@+id/longest_fall"
+            android:layout_centerVertical="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -130,16 +136,18 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:text="@string/shortest_fall_label"
-            android:id="@+id/shortest_fall_label" />
+            android:id="@+id/shortest_fall_label"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Medium Text"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:id="@+id/shortest_fall" />
+            android:id="@+id/shortest_fall"
+            android:layout_centerVertical="true" />
     </RelativeLayout>
 
 
