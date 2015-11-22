@@ -28,6 +28,7 @@ public class UserStatsActivity extends AppCompatActivity {
     TextView shortest_fall;
     TextView average_fall;
     Button leaderboard_button;
+    Button refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,13 @@ public class UserStatsActivity extends AppCompatActivity {
         first_fall = (TextView) findViewById(R.id.first_fall);
         longest_fall = (TextView) findViewById(R.id.longest_fall);
         shortest_fall = (TextView) findViewById(R.id.shortest_fall);
+        refresh = (Button) findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FreeFallrHttpClient.get("/stats/", new RequestParams(), new UserStatsHandler());
+            }
+        });
 
         FreeFallrHttpClient.get("/stats/", new RequestParams(), new UserStatsHandler());
     }
