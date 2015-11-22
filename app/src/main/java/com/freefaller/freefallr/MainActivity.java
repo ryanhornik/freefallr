@@ -61,6 +61,8 @@ class LoginHandler extends TextHttpResponseHandler {
         success = true;
         message = responseBody;
 
+        Intent service = new Intent(MainActivity.instance, FallListenerService.class);
+        MainActivity.instance.startService(service);
         Intent intent = new Intent(MainActivity.instance, UserStatsActivity.class);
         MainActivity.instance.startActivity(intent);
     }
