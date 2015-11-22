@@ -11,7 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.freefaller.freefallr.UserStatsActivity"
-    tools:showIn="@layout/activity_user_stats">
+    tools:showIn="@layout/activity_user_stats"
+    android:visibility="visible">
 
     <TextView
         android:layout_width="wrap_content"
@@ -148,8 +149,17 @@
             android:layout_alignParentRight="true"
             android:id="@+id/shortest_fall"
             android:layout_centerVertical="true" />
+
     </RelativeLayout>
 
-
+    <Button
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        android:id="@+id/refresh"
+        android:layout_gravity="center_horizontal"
+        android:background="#4db6ac"
+        android:allowUndo="true"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

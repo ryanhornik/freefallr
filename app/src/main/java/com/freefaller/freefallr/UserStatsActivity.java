@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -25,6 +27,7 @@ public class UserStatsActivity extends AppCompatActivity {
     TextView longest_fall;
     TextView shortest_fall;
     TextView average_fall;
+    Button refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,14 @@ public class UserStatsActivity extends AppCompatActivity {
         first_fall = (TextView) findViewById(R.id.first_fall);
         longest_fall = (TextView) findViewById(R.id.longest_fall);
         shortest_fall = (TextView) findViewById(R.id.shortest_fall);
+        refresh = (Button) findViewById(R.id.refresh);
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FreeFallrHttpClient.get("/stats/", new RequestParams(), new UserStatsHandler());
+            }
+        });
     }
 
     class UserStatsHandler extends JsonHttpResponseHandler {
