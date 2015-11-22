@@ -7,16 +7,14 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Bundle;
+import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.IOException;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -28,6 +26,7 @@ public class FallListenerService extends Service implements SensorEventListener 
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private final float NOISE = 3.0f;
+    MediaPlayer mp = new MediaPlayer();
 
     int updates = 0;
 
@@ -44,6 +43,9 @@ public class FallListenerService extends Service implements SensorEventListener 
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         Log.d("DEBUG", "Started service");
+
+        mp = MediaPlayer.create(this, R.raw.femalescream);
+        mp.setLooping(true);
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -71,8 +73,15 @@ public class FallListenerService extends Service implements SensorEventListener 
         if(currently_falling && !falling){
             falling = true;
             start_time = time;
+            mp.start();
         }
         if(!currently_falling && falling){
+            mp.stop();
+            try {
+                mp.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             long elapsed = time - start_time;
             falling = false;
             submit(elapsed);
@@ -86,7 +95,7 @@ public class FallListenerService extends Service implements SensorEventListener 
         }
         try {
             mSensorManager.unregisterListener(this);
-            Thread.sleep(100);
+            Thread.sleep(30);
             mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         } catch (InterruptedException e) {
             e.printStackTrace();
