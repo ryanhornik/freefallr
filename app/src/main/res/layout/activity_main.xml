@@ -62,9 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:id="@+id/signup"
+        android:id="@+id/signUp"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textview"
-        android:layout_toEndOf="@+id/textview" />
+        android:layout_toRightOf="@+id/login"/>
 
 </RelativeLayout>

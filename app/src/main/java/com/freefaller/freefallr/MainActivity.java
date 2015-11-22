@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         login = (Button) findViewById(R.id.login);
-        signUp = (Button) findViewById(R.id.signup);
+        signUp = (Button) findViewById(R.id.signUp);
         usernameField = (EditText) findViewById(R.id.username);
         passwordField = (EditText) findViewById(R.id.password);
 
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(myIntent);
+                Intent myIntent = new Intent(MainActivity.instance, RegisterActivity.class);
+                MainActivity.instance.startActivity(myIntent);
             }
         });
     }
