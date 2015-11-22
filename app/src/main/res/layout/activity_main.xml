@@ -38,17 +38,6 @@
         android:layout_alignEnd="@+id/username"
         android:hint="Password" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Attempts Left:"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/password"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="25dp" />
-
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,6 +53,7 @@
         android:text="Sign Up"
         android:id="@+id/signUp"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/login"/>
+        android:layout_toRightOf="@+id/textview"
+        android:layout_toEndOf="@+id/textview" />
 
 </RelativeLayout>
