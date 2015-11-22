@@ -18,6 +18,6 @@ from django.contrib import admin
 import freefallr.urls
 
 urlpatterns = [
-    url(r'^/', include(freefallr.urls)),
+    url(r'^', include(freefallr.urls)),
     url(r'^admin/', include(admin.site.urls)),
 ]

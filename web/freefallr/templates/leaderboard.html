@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <style>
+        body{
+            background-color: #eeeeee;
+        }
+        table{
+            width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        tr {
+            padding: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        td, th {
+            padding: 0 15px;
+        }
+        .dark{
+            background-color: #333333;
+        }
+        .light{
+            background-color: #777777;
+        }
+    </style>
+</head>
+<body>
+<h1>Leaderboard</h1>
+<table>
+    <tr>
+        <th>
+            Rank
+        </th>
+        <th>
+            Username
+        </th>
+        <th>
+            Fall time (ms)
+        </th>
+    </tr>
+    {% for score in scores %}
+        {% if forloop.counter|divisibleby:2 %}
+            <tr class="dark">
+        {% else %}
+            <tr class="light">
+        {% endif %}
+                <td>{{ forloop.counter }}</td>
+                <td>{{ score.username }}</td>
+                <td>{{ score.score }}</td>
+            </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
