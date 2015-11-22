@@ -42,17 +42,4 @@ public class FreeFallrHttpClient{
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;
     }
-
-    static class RegisterHandler extends TextHttpResponseHandler {
-
-        @Override
-        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-            Log.d("DEBUG", "Failure");
-        }
-
-        @Override
-        public void onSuccess(int statusCode, Header[] headers, String responseBody) {
-            Log.d("DEBUG", responseBody);
-        }
-    }
 }
