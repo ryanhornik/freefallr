@@ -1,8 +1,12 @@
 package com.freefaller.freefallr;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -37,6 +41,7 @@ public class UserStatsActivity extends AppCompatActivity {
         longest_fall = (TextView) findViewById(R.id.longest_fall);
         shortest_fall = (TextView) findViewById(R.id.shortest_fall);
     }
+
     class UserStatsHandler extends JsonHttpResponseHandler {
         public String first_fall_str = null;
         public String last_fall_str = null;
@@ -70,6 +75,26 @@ public class UserStatsActivity extends AppCompatActivity {
         public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
             success = false;
             message = responseString;
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                //Transition to settings menu
+                Intent myIntent = new Intent(this, SettingsActivity.class);
+                startActivity(myIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
