@@ -98,23 +98,4 @@ public class UserStatsActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                //Transition to settings menu
-                Intent myIntent = new Intent(this, SettingsActivity.class);
-                startActivity(myIntent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }

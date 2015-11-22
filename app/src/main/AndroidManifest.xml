@@ -32,9 +32,6 @@
             android:name=".UserStatsActivity"
             android:label="@string/title_activity_user_stats"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
 
         <service
             android:name=".FallListenerService"
