@@ -1,3 +1,5 @@
 from django.contrib import admin
+from freefallr.models import AppUser, Scores
 
-# Register your models here.
+admin.site.register(AppUser)
+admin.site.register(Scores)
