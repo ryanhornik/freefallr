@@ -39,7 +39,17 @@
         <service
             android:name=".FallListenerService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity
+            android:name=".LeaderboardActivity"
+            android:label="@string/title_activity_leaderboard"
+            android:parentActivityName=".UserStatsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.freefaller.freefallr.UserStatsActivity" />
+        </activity>
     </application>
 
 </manifest>

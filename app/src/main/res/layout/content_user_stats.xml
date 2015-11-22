@@ -150,6 +150,15 @@
             android:layout_centerVertical="true" />
     </RelativeLayout>
 
+    <Button
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:text="@string/leaderboard"
+        android:id="@+id/leaderboard_button"
+        android:layout_gravity="center_horizontal"
+        android:background="#4db6ac"
+        android:allowUndo="true"
+        android:layout_marginTop="20dp" />
 
 
 </LinearLayout>

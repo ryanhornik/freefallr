@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -25,6 +27,7 @@ public class UserStatsActivity extends AppCompatActivity {
     TextView longest_fall;
     TextView shortest_fall;
     TextView average_fall;
+    Button leaderboard_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,14 @@ public class UserStatsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_stats);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FreeFallrHttpClient.get("/stats/", new RequestParams(), new UserStatsHandler());
+        leaderboard_button = (Button) findViewById(R.id.leaderboard_button);
+        leaderboard_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserStatsActivity.this, LeaderboardActivity.class);
+                startActivity(intent);
+            }
+        });
 
         username = (TextView) findViewById(R.id.username);
         average_fall = (TextView) findViewById(R.id.average_fall);
@@ -40,6 +50,8 @@ public class UserStatsActivity extends AppCompatActivity {
         first_fall = (TextView) findViewById(R.id.first_fall);
         longest_fall = (TextView) findViewById(R.id.longest_fall);
         shortest_fall = (TextView) findViewById(R.id.shortest_fall);
+
+        FreeFallrHttpClient.get("/stats/", new RequestParams(), new UserStatsHandler());
     }
 
     class UserStatsHandler extends JsonHttpResponseHandler {
