@@ -8,7 +8,7 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
 public class FreeFallrHttpClient{
-    public static final String BASE_URL = "http://freefallr-dev.elasticbeanstalk.com";
+    public static final String BASE_URL = "http://freefallr.com";
     private static AsyncHttpClient client = new AsyncHttpClient();
     static PersistentCookieStore cookieStore = null;
 
