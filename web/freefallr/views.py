@@ -66,3 +66,12 @@ def top_n_scores(request):
 def leaderboard(request):
     scores = score_list(10)
     return render(request, 'leaderboard.html', {'scores': scores})
+
+
+def user_stats(request):
+    user_id = request.GET.get('uid', -1)
+    if user_id == -1:
+        usr = request.user.appuser
+    else:
+        usr = AppUser.objects.get(pk=user_id)
+    return HttpResponse(json.dumps(usr.get_stats()))

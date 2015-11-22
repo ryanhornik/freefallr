@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'top/?$', views.top_n_scores, name='top'),
     url(r'leaderboard/?$', views.leaderboard, name='leaderboard'),
     url(r'submit/?$', views.submit_score, name='submit_score'),
+    url(r'stats/?$', views.user_stats, name='user_stats'),
 ]
