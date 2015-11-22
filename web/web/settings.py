@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'b(8otij^=5ekw@g=p2s8$)dj1y)ghvf9w6#_c2z@#eq&ir-53_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".freefallr.com", "freefaller-dev.elasticbeanstalk.com", "localhost"]
 
 
 # Application definition
